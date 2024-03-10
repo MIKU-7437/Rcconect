@@ -1,0 +1,9 @@
+{% load account %}
+{% load i18n %}
+
+{% autoescape off %}{% user_display user as user_display %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+Вас приветствует RCconnect!
+
+Вы видите это письмо, потому что пользователь {{ user_display }} указал свой адрес электронной почты для регистрации учетной записи на {{ site_name }}.
+
+Чтобы подтвердить email, перейдите на {{ key }}{% endblocktrans %}{% endautoescape %}

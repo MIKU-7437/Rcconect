@@ -1,0 +1,15 @@
+{% load account %}
+{% load i18n %}
+
+{% autoescape off %}{% user_display user as user_display %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+Вас приветствует RCconnect!
+
+Вы видите это письмо, потому что вы или кто-то другой запросил
+пароль для этого аккаунта. Однако у нас нет никаких записей о пользователе
+с электронной почтой {{ email }} в нашей базе данных.
+
+Это письмо можно проигнорировать, если вы не запрашивали сброс пароля.
+
+Если это были вы, вы можете зарегистрировать учетную запись, перейдя по ссылке ниже.{% endblocktrans %}
+
+http://127.0.0.1:8000/api/v1/auth/register/{% endautoescape %}
