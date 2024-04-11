@@ -61,6 +61,10 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "dj_rest_auth.registration",
     "corsheaders",
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
+
+
     # "phonenumber_field",
 ]
 
@@ -168,12 +172,29 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 REST_AUTH = {
     # 'JWT_AUTH_COOKIE': 'my-app-auth',
     # 'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
     'USE_JWT': True,
+}
+
+# drf-spectacular settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'RCconnect API',
+    'DESCRIPTION': 'MVP version',
+    'VERSION': 'v0.1.0',
+    'SWAGGER_UI_DIST': 'SIDECAR',
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+    'SERVE_INCLUDE_SCHEMA': True,
+    'SCHEMA_PATH_PREFIX': '/',
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        "filter": True,
+    },
 }
 
 
